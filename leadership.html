@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lima CRM — Leadership</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/pages.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar__brand">Lima</div>
+        <nav class="sidebar__nav">
+          <a class="sidebar__link nav-cm-portfolio" href="./dashboard.html">Dashboard</a>
+          <a class="sidebar__link" href="./lor.html">LOR pipeline</a>
+          <a class="sidebar__link is-active nav-leadership" href="./leadership.html">Leadership view</a>
+        </nav>
+      </aside>
+      <div class="main">
+        <header class="topbar">
+          <span class="topbar__user" style="margin-right: auto">
+            <span class="avatar">LD</span>
+            <span>Leadership</span>
+          </span>
+          <a class="btn btn--ghost btn--sm nav-cm-portfolio" href="./dashboard.html">Client portfolio</a>
+          <a class="btn btn--ghost btn--sm" href="./index.html">Home</a>
+        </header>
+        <main class="page-body">
+          <h1 class="page-title">Portfolio overview</h1>
+          <div class="grid-6" style="margin-bottom: 24px">
+            <div class="card">
+              <div class="card__label">Total portfolio</div>
+              <div class="card__value" id="stat-total">0</div>
+              <div class="card__hint">All matters</div>
+            </div>
+            <div class="card">
+              <div class="card__label">In motion</div>
+              <div class="card__value" id="stat-active">0</div>
+              <div class="card__hint">On track + at risk + overdue</div>
+            </div>
+            <div class="card">
+              <div class="card__label">Filed</div>
+              <div class="card__value" id="stat-filed">0</div>
+              <div class="card__hint">Agency review</div>
+            </div>
+            <div class="card">
+              <div class="card__label">Approved</div>
+              <div class="card__value" id="stat-approved">0</div>
+              <div class="card__hint">Wins</div>
+            </div>
+            <div class="card">
+              <div class="card__label">RFE</div>
+              <div class="card__value" id="stat-rfe">0</div>
+              <div class="card__hint">Open RFEs</div>
+            </div>
+            <div class="card">
+              <div class="card__label">Needs attention</div>
+              <div class="card__value" id="stat-attn">0</div>
+              <div class="card__hint">Risk / SLA</div>
+            </div>
+          </div>
+          <div class="chart-row">
+            <div class="chart-card">
+              <h3>Cases by status</h3>
+              <div id="chart-status-inner" class="chart-simple-bars"></div>
+            </div>
+            <div class="chart-card">
+              <h3>Cases by visa category</h3>
+              <div id="chart-visa-inner" class="chart-simple-bars"></div>
+            </div>
+          </div>
+          <div class="split-layout">
+            <div class="stack">
+              <div class="card">
+                <div style="margin-bottom: 12px">
+                  <h2 style="font-size: 15px; font-weight: 600">CM capacity heatmap</h2>
+                </div>
+                <div class="heatmap" id="heatmap"></div>
+                <p style="font-size: 12px; color: var(--color-text-muted); margin-top: 12px">
+                  Cell color reflects relative caseload vs peers (mock thresholds).
+                </p>
+              </div>
+              <div class="table-wrap" style="margin-top: 16px">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Case manager</th>
+                      <th>Reported load</th>
+                      <th>At risk</th>
+                      <th>Overdue</th>
+                      <th>Load band</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cm-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card" style="position: sticky; top: 16px">
+              <h2 style="font-size: 15px; font-weight: 600; margin-bottom: 12px">Needs attention</h2>
+              <div class="panel-list" id="attention-list"></div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <button type="button" id="demo-reset" class="demo-reset-fab" title="Regenerate demo data">Reset demo</button>
+    <script defer src="./js/mock-data.js"></script>
+    <script defer src="./js/store.js"></script>
+    <script defer src="./js/router.js"></script>
+    <script defer src="./js/components.js"></script>
+    <script defer src="./js/pages/leadership.js"></script>
+    <script defer src="./js/persona-switch.js"></script>
+  </body>
+</html>
