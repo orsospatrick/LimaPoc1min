@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lima CRM — Client</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/pages.css" />
+  </head>
+  <body>
+    <div id="client-root">
+      <div class="app-shell">
+        <aside class="sidebar">
+          <div class="sidebar__brand">Lima</div>
+          <nav class="sidebar__nav">
+            <a class="sidebar__link" href="./dashboard.html">Client portfolio</a>
+            <a class="sidebar__link is-active" href="#">This client</a>
+          </nav>
+        </aside>
+        <div class="main">
+          <header class="topbar">
+            <span style="margin-right: auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center">
+              <button type="button" class="btn btn--ghost btn--sm" id="back-dash">Back to portfolio</button>
+              <a class="btn btn--ghost btn--sm nav-leadership" href="./leadership.html" id="nav-leadership">Leadership</a>
+            </span>
+            <a class="btn btn--ghost btn--sm" href="./index.html">Home</a>
+          </header>
+          <main class="page-body">
+            <div class="client-header">
+              <div class="client-header__main">
+                <h1 id="client-name">—</h1>
+                <div class="client-meta">
+                  <span id="client-visa"></span>
+                  <span>CM: <strong id="client-cm">—</strong></span>
+                  <span id="client-status"></span>
+                  <span>Kickoff: <strong id="client-kickoff">—</strong></span>
+                </div>
+              </div>
+            </div>
+            <div class="tabs" role="tablist">
+              <button type="button" class="tab is-active" data-tab="overview">Overview</button>
+              <button type="button" class="tab" data-tab="criteria">Criteria</button>
+              <button type="button" class="tab" data-tab="tasks">Tasks</button>
+              <button type="button" class="tab" data-tab="timeline">Timeline</button>
+              <button type="button" class="tab" data-tab="documents">Documents</button>
+              <button type="button" class="tab" data-tab="messages">Messages</button>
+            </div>
+            <section class="tab-panel" data-panel="overview">
+              <h2 class="page-title" style="font-size: 16px; margin-bottom: 16px">Stage progress</h2>
+              <div class="stage-tracker" id="stage-tracker"></div>
+              <div class="card" style="margin-top: 20px; max-width: 440px">
+                <div class="field">
+                  <label class="field__label" for="demo-status-select">Demo — matter status</label>
+                  <select class="select" id="demo-status-select" aria-label="Change matter status for demo"></select>
+                </div>
+                <p style="font-size: 12px; color: var(--color-text-muted); margin: 8px 0 0">
+                  Saves to localStorage. Default values after <strong>Reset demo</strong> come from <code>js/mock-data.js</code>.
+                </p>
+              </div>
+            </section>
+            <section class="tab-panel" data-panel="criteria" hidden>
+              <ul class="panel-list" id="criteria-list"></ul>
+              <form id="crit-upload-form" class="stack" style="margin-top: 16px; max-width: 480px">
+                <div class="field">
+                  <label class="field__label" for="crit-label">Add criterion (mock)</label>
+                  <input class="input" id="crit-label" placeholder="e.g. Major media coverage" />
+                </div>
+                <button type="submit" class="btn btn--secondary btn--sm">Add to list</button>
+              </form>
+            </section>
+            <section class="tab-panel" data-panel="tasks" hidden>
+              <ul class="panel-list" id="task-list"></ul>
+              <form id="task-form" class="stack" style="margin-top: 16px; max-width: 520px">
+                <div class="field">
+                  <label class="field__label" for="task-title">Title</label>
+                  <input class="input" id="task-title" required />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="task-due">Due date</label>
+                  <input class="input" id="task-due" type="date" required />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="task-pri">Priority</label>
+                  <select class="select" id="task-pri">
+                    <option>Low</option>
+                    <option selected>Medium</option>
+                    <option>High</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn--primary btn--sm">Create task</button>
+              </form>
+            </section>
+            <section class="tab-panel" data-panel="timeline" hidden>
+              <h2 class="page-title" style="font-size: 16px; margin-bottom: 16px">Matter timeline</h2>
+              <div class="timeline" id="timeline"></div>
+            </section>
+            <section class="tab-panel" data-panel="documents" hidden>
+              <div id="doc-folders"></div>
+              <form id="doc-form" class="stack" style="margin-top: 16px; max-width: 480px">
+                <div class="field">
+                  <label class="field__label" for="doc-name">File name (mock upload)</label>
+                  <input class="input" id="doc-name" placeholder="evidence_addendum.pdf" />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="doc-stage">Folder / stage</label>
+                  <select class="select" id="doc-stage"></select>
+                </div>
+                <button type="submit" class="btn btn--secondary btn--sm">Record document</button>
+              </form>
+            </section>
+            <section class="tab-panel" data-panel="messages" hidden>
+              <div class="message-thread" id="msg-thread"></div>
+              <form id="msg-form" class="stack" style="max-width: 560px">
+                <div class="field">
+                  <label class="field__label" for="msg-body">Message</label>
+                  <textarea class="input" id="msg-body" rows="3" required style="resize: vertical"></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary btn--sm">Send (mock)</button>
+              </form>
+            </section>
+          </main>
+        </div>
+      </div>
+    </div>
+    <button type="button" id="demo-reset" class="demo-reset-fab" title="Regenerate demo data">Reset demo</button>
+    <script defer src="./js/mock-data.js"></script>
+    <script defer src="./js/store.js"></script>
+    <script defer src="./js/router.js"></script>
+    <script defer src="./js/components.js"></script>
+    <script defer src="./js/pages/client.js"></script>
+    <script defer src="./js/persona-switch.js"></script>
+  </body>
+</html>
